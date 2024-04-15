@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Orelega+One&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* ---------------------- Main page components -----------------------*/
+main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.ttl-plc {
+    display: flex;
+    height: 80px;
+}
+
+/* ---------------------- Page Title -----------------------*/
+.view-title {
+    font-family: "Orelega One";
+    height: fit-content;
+    /* background-color: blue; */
+    box-shadow: 0px 0px black;
+    position: absolute;
+}
+
+.view-title::after {
+    content: "";
+    position: absolute;
+    width: 100%; 
+    height: 20px; 
+    top: 30px; 
+    left: 0;
+    background-color: yellow; 
+    transform: translateY(-50%);
+    z-index: -1;
+}
+/* ---------------------- People Sections -----------------------*/
+
+.classrooms-ppl {
+    background-color: aqua;
+    height: 100%;
+    display: flex;
+}
+
+.teachers {
+    background-color: red;
+    height: 100%;
+    width: 40vw;
+}
+
+.teacher-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.teacher-list > li {
+    margin: 20px 50px;
+}
+
+.students {
+    background-color: green;
+    height: 100%;
+    width: 100%;
+}
