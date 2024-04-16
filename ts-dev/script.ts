@@ -5,14 +5,14 @@ async function fetchData() {
   }
   
 const CURRENTYEAR: number = 1991;
-let PROMOTION = new Map([
+let PROMOTION = [
   [1, "First"],
   [2, "Second"],
   [3, "Third"],
   [4, "Fourth"],
   [5, "Fifth"],
   [6, "Sixth"]
-])
+];
 
 
 class People {
@@ -85,8 +85,9 @@ class DisplayArray {
   
   private studentFormatDate(stringDate: string) {
     let year: number = parseInt(stringDate.slice(6));
-    let whichYear: number = CURRENTYEAR - year;
-    return PROMOTION[whichYear];
+    let whichYear: number = CURRENTYEAR - year + 1;
+    
+    return PROMOTION[whichYear-1][1] as string;
   }
   
   private teacherFormatDate(stringDate) {
@@ -151,7 +152,7 @@ class DisplayArray {
   }
 
   public drawStudents() {
-    const studentHTMLList = document.getElementById("student-list") as HTMLUListElement;
+    const studentHTMLList = document.querySelector(".student-list") as HTMLUListElement;
     for (const student of this.students) {
       const listItem = this.createListItem(student.name, student.description, student.category, this.studentFormatDate(student.arrivalDate));
       studentHTMLList.appendChild(listItem);
@@ -159,7 +160,7 @@ class DisplayArray {
   }
   
   public drawTeachers() {
-    const teacherHTMLList = document.getElementById("teacher-list") as HTMLUListElement;
+    const teacherHTMLList = document.querySelector("teacher-list") as HTMLUListElement;
     for (const teacher of this.teachers) {
       const listItem = this.createListItem(teacher.name, teacher.description, teacher.category, this.teacherFormatDate(teacher.arrivalDate));
       teacherHTMLList.appendChild(listItem);
@@ -167,13 +168,14 @@ class DisplayArray {
   }
 }
 
-// fetchData().then((jsonObject) => {
-//   let studentArray = new Array();
-//   let teacherArray = new Array();
-//   for (const person in jsonObject) {
-//     person.isTeacher ? teacherArray.push(person) : studentArray.push(person);
+fetchData().then((jsonObject) => {
+  let studentArray = new Array();
+  let teacherArray = new Array();
+  for (const person of jsonObject) {
+    person.isTeacher ? teacherArray.push(person) : studentArray.push(person);
+  }
+  let arrays = new DisplayArray(studentArray, teacherArray);
+  arrays.drawStudents();
+  arrays.drawTeachers();
+})
 
-//   }
-// })
-
-fetchData().then((res)=>console.log(res))
