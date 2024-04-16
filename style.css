@@ -55,7 +55,7 @@ main {
 .teachers {
     /* background-color: wheat; */
     height: 100%;
-    width: 40%;
+    width: 37%;
     /* overflow-wrap: break-word; */
 }
 
@@ -130,6 +130,8 @@ h2 {
 
 .ppl-text {
     height: 65%;
+    max-height: 65%;
+    /* background-color: red; */
 }
 
 .identity {
@@ -138,7 +140,18 @@ h2 {
 }
 
 .char-pres {
+    text-overflow: ellipsis;
+    overflow: hidden;
     font-size: 1.7vh;
+    /* background-color: blue; */
+    max-height: 60%;
+}
+
+.char-pres:hover {
+    position: relative;
+    overflow: visible;
+    max-height: 100%;
+    background-color: white;
 }
 
 .category {
