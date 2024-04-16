@@ -1,0 +1,22 @@
+{
+  "name": "2024-test-technique",
+  "version": "1.0.0",
+  "description": "Technical Test for an apprenticeship",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jibe7/2024-Test-Technique.git"
+  },
+  "author": "Jibe7",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jibe7/2024-Test-Technique/issues"
+  },
+  "homepage": "https://github.com/Jibe7/2024-Test-Technique#readme",
+  "dependencies": {
+    "typescript": "^5.4.5"
+  }
+}
