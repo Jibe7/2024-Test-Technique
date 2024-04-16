@@ -1,5 +1,5 @@
 # Technical Test
-From this figma design : ![figma design](image.png), write a single web page that works with the JSON data in [data.json](data.json) as if it was coming from a server call.
+From this figma design : ![figma design](image.png) write a single web page that works with the JSON data in [data.json](data.json) as if it was coming from a server call.
 
 ## Instructions
 - The assignment can be done in any of the following framework :
@@ -12,6 +12,7 @@ From this figma design : ![figma design](image.png), write a single web page tha
 - Date of the day is 12 November 1991
 - Teachers need to be printed from date of arrival in the school
 - Students must be printed by house order, then by alphabetic order inside of each house.
+
 🎁 Help :
 
 If you never used [Figma](https://www.figma.com/fr/best-practices/tips-on-developer-handoff/#an-overview-of-figma-for-developers)
