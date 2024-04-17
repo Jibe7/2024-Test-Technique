@@ -65,7 +65,7 @@ function fetchData() {
         });
     });
 }
-var CURRENTYEAR = 1991;
+var CURRENTYEAR = new Date("12/11/1991");
 var PROMOTION = [
     [1, "First Year"],
     [2, "Second Year"],
@@ -107,14 +107,6 @@ var DisplayArray = /** @class */ (function () {
         this.sortStudents();
         this.sortTeachers();
     }
-    // public addStudent(student: Student) {
-    //   this.students.push(student);
-    //   let size: number = this.students.length;
-    //   let index: number = size-1;
-    //   let current: number = size;
-    //   while (index > 0) { // Add at the end and exchange places until the place is the right one by comparing by sortByArrivalDate
-    //   }
-    // }
     DisplayArray.prototype.sortByArrivalDate = function (a, b) {
         var dateA = new Date(a.arrivalDate.split("/").reverse().join("-"));
         var dateB = new Date(b.arrivalDate.split("/").reverse().join("-"));
@@ -135,17 +127,19 @@ var DisplayArray = /** @class */ (function () {
         return houseA > houseB ? 1 : -1;
     };
     DisplayArray.prototype.sortStudents = function () {
-        console.log(this.students);
         this.students.sort(this.sortByHouseAndName);
-        console.log(this.students);
     };
     DisplayArray.prototype.sortTeachers = function () {
         this.teachers.sort(this.sortByArrivalDate);
     };
     DisplayArray.prototype.studentFormatDate = function (stringDate) {
-        var year = parseInt(stringDate.slice(6));
-        var whichYear = CURRENTYEAR - year + 1;
-        return PROMOTION[whichYear - 1][1];
+        var studentArrivalDate = new Date(stringDate.split("/").reverse().join("-"));
+        var yearDiff = CURRENTYEAR.getFullYear() - studentArrivalDate.getFullYear();
+        if (studentArrivalDate.getMonth() > CURRENTYEAR.getMonth() ||
+            (studentArrivalDate.getMonth() === CURRENTYEAR.getMonth() && studentArrivalDate.getDate() > CURRENTYEAR.getDate())) {
+            yearDiff -= 1;
+        }
+        return PROMOTION[yearDiff][1];
     };
     DisplayArray.prototype.teacherFormatDate = function (stringDate) {
         return stringDate.replaceAll("/", ".");
