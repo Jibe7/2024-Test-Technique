@@ -44,30 +44,48 @@ main {
     z-index: -1;
 }
 /* ---------------------- People Sections -----------------------*/
-
-.classrooms-ppl {
-    display: flex;
-    flex-grow: 1;
-    width: 100%;
+@media (min-width: 900px) {
+    .classrooms-ppl {
+        display: flex;
+        flex-grow: 1;
+        width: 100%;
+    }
+    .teachers {
+        height: 100%;
+        width: 37%;
+    }
+    .teachers > h2 {
+        margin-left: 3.7vw;
+    }
+    .students {
+        height: 100%;
+        width: 60%;
+    }
+    h2 {
+        margin: 3vh 0 3vh 0vw;
+    }
 }
 
-.teachers {
-    height: 100%;
-    width: 37%;
+@media (max-width: 900px) {
+    .classrooms-ppl {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        width: 100%;
+    }
+    .teachers {
+        height: 100%;
+        width: 100%;
+    }
+    .teachers > h2, .students > h2 {
+        text-align: center;
+    }
+    .students {
+        height: 100%;
+        width: 100%;
+    }
 }
 
-h2 {
-    margin: 3vh 0 3vh 0vw;
-}
-
-.teachers > h2 {
-    margin-left: 3.7vw;
-}
-
-.students {
-    height: 100%;
-    width: 60%;
-}
 
 .teacher-list {
     list-style-type: none;
@@ -76,34 +94,74 @@ h2 {
     align-items: center;
 }
 
-.student-list {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    flex-flow: row;
-    flex-wrap: wrap;
+
+@media (min-width: 900px) {
+    .student-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        flex-flow: row;
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 900px) {
+    .student-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 /* ------------------ Teacher elements ------------------ */
-.teacher-list > li {
-    margin: 2vh 2vw 1vh 0;
-    border: 1px solid #F2F2F2;
-    box-shadow: 0px 4px 10px 0px #0000001A;
-    width: 28vw;
-    height: 15vh;
-    border-radius: 10px;
-    padding: 15px;
+
+@media (min-width: 900px) {
+    .teacher-list > li {
+        margin: 2vh 2vw 1vh 0;
+        border: 1px solid #F2F2F2;
+        box-shadow: 0px 4px 10px 0px #0000001A;
+        width: 28vw;
+        height: 15vh;
+        border-radius: 10px;
+        padding: 15px;
+    }
+}
+@media (max-width: 900px) {
+    .teacher-list > li {
+        margin: 2vh 2vw 1vh 0;
+        border: 1px solid #F2F2F2;
+        box-shadow: 0px 4px 10px 0px #0000001A;
+        width: 70vw;
+        height: 15vh;
+        border-radius: 10px;
+        padding: 15px;
+    }
 }
 
 
 /* ------------------ Student elements ------------------ */
-.student-list > li {
-    margin: 2vh 2vw 1vh 0;
-    border: 1px solid #F2F2F2;
-    box-shadow: 0px 4px 10px 0px #0000001A;
-    width: 28vw;
-    height: 15vh;
-    border-radius: 10px;
-    padding: 15px;
+@media (min-width: 900px) {
+    .student-list > li {
+        margin: 2vh 2vw 1vh 0;
+        border: 1px solid #F2F2F2;
+        box-shadow: 0px 4px 10px 0px #0000001A;
+        width: 28vw;
+        height: 15vh;
+        border-radius: 10px;
+        padding: 15px;
+    }    
+}
+
+@media (max-width: 900px) {
+    .student-list > li {
+        margin: 2vh 2vw 1vh 0;
+        border: 1px solid #F2F2F2;
+        box-shadow: 0px 4px 10px 0px #0000001A;
+        width: 70vw;
+        height: 15vh;
+        border-radius: 10px;
+        padding: 15px;
+    }    
+    
 }
 /* ------------------ People elements ------------------ */
 .ppl {
@@ -152,18 +210,34 @@ h2 {
     font-size: 1.4vh;
 }
 
+@media (min-width: 900px) {
+    .category {
+        font-size: 1.8vh;
+        margin-left: 1.6vw;
+        border-radius: 20px;
+        height: 3.6vh;
+        width: 7vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: cadetblue;
+        color: white;
+    }
+}
 
-.category {
-    font-size: 1.8vh;
-    margin-left: 1.6vw;
-    border-radius: 20px;
-    height: 3.6vh;
-    width: 7vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: cadetblue;
-    color: white;
+@media (max-width: 900px) {
+    .category {
+        font-size: 1.8vh;
+        margin-left: 1.6vw;
+        border-radius: 20px;
+        height: 3.6vh;
+        width: 16vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: cadetblue;
+        color: white;
+    }    
 }
 /* ------------------  ------------------ */
 .transfiguration, .gryffindor {
