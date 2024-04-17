@@ -85,7 +85,7 @@ class DisplayArray {
     this.teachers.sort(this.sortByArrivalDate);
   }
   
-  private studentFormatDate(stringDate: string): strings {
+  private studentFormatDate(stringDate: string): string {
     let studentArrivalDate: Date = new Date(stringDate.split("/").reverse().join("-"));
     let yearDiff = CURRENTYEAR.getFullYear() - studentArrivalDate.getFullYear();
   
