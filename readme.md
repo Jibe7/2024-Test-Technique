@@ -27,7 +27,7 @@ I successfully followed 3 out of 4 instructions for the test :
 - I added a .md file explaining how to run locally the project and I'll also publish it on [GitHub Page](https://jibe7.github.io/2024-Test-Technique/). 🆗 
 - I created TypeScript class and typed all the variables of the code 🆗
 - I put the final repository on GitHub (public) 🆗
-- I did it without framework using HTML, TypeScript, but I used only CSS instead of SCSS that I didn't know at the time of the assignment ❌
+- I did it without framework using HTML, TypeScript, but I used only CSS instead of SCSS that I didn't know at the time of the assignment / I also didn't use a component ❌
 
 ## Personnal conclusion
 - Git and Github : I was not very consistent with my commit style (what text do i put in the commit message, which language...) but I thought it would not be necessary for a technical test where my goal was to get done with it asap; as other candidates had already started/done the project. For this reason also I tried to do everything as fast as possible with my current knowledge (HTML/CSS/JavaScript only) and did it with no framework but learnt to use TypeScript on the go, despite the fact that the instruction said that there was no time limit.
