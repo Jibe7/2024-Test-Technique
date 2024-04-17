@@ -2,10 +2,10 @@ async function fetchData() {
     const response: Response = await fetch('data.json');
     const jsonData = await response.json();
     return jsonData;
-  }
+}
   
-const CURRENTYEAR: number = 1991;
-let PROMOTION = [
+const CURRENTYEAR: Date = new Date("12/11/1991");
+const PROMOTION = [
   [1, "First Year"],
   [2, "Second Year"],
   [3, "Third Year"],
@@ -58,16 +58,6 @@ class DisplayArray {
     this.sortTeachers();    
   }
   
-  // public addStudent(student: Student) {
-  //   this.students.push(student);
-  //   let size: number = this.students.length;
-  //   let index: number = size-1;
-  //   let current: number = size;
-  //   while (index > 0) { // Add at the end and exchange places until the place is the right one by comparing by sortByArrivalDate
-      
-  //   }
-  // }
-  
   private sortByArrivalDate(a: People, b: People) {
     const dateA = new Date(a.arrivalDate.split("/").reverse().join("-"))
     const dateB = new Date(b.arrivalDate.split("/").reverse().join("-"))
@@ -88,20 +78,23 @@ class DisplayArray {
   }
   
   private sortStudents() {
-    console.log(this.students);
     this.students.sort(this.sortByHouseAndName);
-    console.log(this.students);
   }
   
   private sortTeachers() {
     this.teachers.sort(this.sortByArrivalDate);
   }
   
-  private studentFormatDate(stringDate: string) {
-    let year: number = parseInt(stringDate.slice(6));
-    let whichYear: number = CURRENTYEAR - year + 1;
-    
-    return PROMOTION[whichYear-1][1] as string;
+  private studentFormatDate(stringDate: string): string {
+    let studentArrivalDate: Date = new Date(stringDate.split("/").reverse().join("-"));
+    let yearDiff = CURRENTYEAR.getFullYear() - studentArrivalDate.getFullYear();
+  
+    if (studentArrivalDate.getMonth() > CURRENTYEAR.getMonth() ||
+        (studentArrivalDate.getMonth() === CURRENTYEAR.getMonth() && studentArrivalDate.getDate() > CURRENTYEAR.getDate())) {
+      yearDiff -= 1;
+    }
+  
+    return PROMOTION[yearDiff][1] as string;
   }
   
   private teacherFormatDate(stringDate) {
