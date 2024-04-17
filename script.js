@@ -67,16 +67,16 @@ function fetchData() {
 }
 var CURRENTYEAR = 1991;
 var PROMOTION = [
-    [1, "First"],
-    [2, "Second"],
-    [3, "Third"],
-    [4, "Fourth"],
-    [5, "Fifth"],
-    [6, "Sixth"]
+    [1, "First Year"],
+    [2, "Second Year"],
+    [3, "Third Year"],
+    [4, "Fourth Year"],
+    [5, "Fifth Year"],
+    [6, "Sixth Year"]
 ];
 var People = /** @class */ (function () {
     function People(jsonObj) {
-        this.name = jsonObj.firstName + jsonObj.lastName;
+        this.name = jsonObj.firstName + " " + jsonObj.lastName;
         this.description = jsonObj.description;
         this.arrivalDate = jsonObj.arrivalDate;
     }
@@ -122,8 +122,22 @@ var DisplayArray = /** @class */ (function () {
             return -1;
         return dateA > dateB ? 1 : 0;
     };
+    DisplayArray.prototype.sortByHouseAndName = function (a, b) {
+        var houseA = a.category;
+        var houseB = b.category;
+        if (houseA === houseB) {
+            var nameA = a.name;
+            var nameB = b.name;
+            if (nameA === nameB)
+                return 0;
+            return nameA > nameB ? 1 : -1;
+        }
+        return houseA > houseB ? 1 : -1;
+    };
     DisplayArray.prototype.sortStudents = function () {
-        this.students.sort(this.sortByArrivalDate);
+        console.log(this.students);
+        this.students.sort(this.sortByHouseAndName);
+        console.log(this.students);
     };
     DisplayArray.prototype.sortTeachers = function () {
         this.teachers.sort(this.sortByArrivalDate);
@@ -134,7 +148,7 @@ var DisplayArray = /** @class */ (function () {
         return PROMOTION[whichYear - 1][1];
     };
     DisplayArray.prototype.teacherFormatDate = function (stringDate) {
-        return stringDate.replace("/", ".");
+        return stringDate.replaceAll("/", ".");
     };
     DisplayArray.prototype.createListItem = function (identity, charPres, category, date) {
         var listItem = document.createElement("li");
@@ -156,7 +170,7 @@ var DisplayArray = /** @class */ (function () {
         dateContainerDiv.classList.add("date-container");
         var calendarImg = document.createElement("img");
         calendarImg.src = "calendar.svg";
-        calendarImg.alt = "Calendrier";
+        calendarImg.alt = "Calendar Logo";
         calendarImg.classList.add("calendar-logo");
         var dateP = document.createElement("p");
         dateP.classList.add("date");
@@ -167,10 +181,11 @@ var DisplayArray = /** @class */ (function () {
         metadataDiv.appendChild(dateContainerDiv);
         var categoryDiv = document.createElement("div");
         categoryDiv.classList.add("category");
+        var colorOption = category.toLowerCase();
+        categoryDiv.classList.add(colorOption);
         var categoryP = document.createElement("p");
         categoryP.textContent = category;
         categoryDiv.appendChild(categoryP);
-        categoryDiv.classList.add("additional-class"); // Add another class here
         pplDiv.appendChild(metadataDiv);
         pplDiv.appendChild(categoryDiv);
         listItem.appendChild(pplDiv);
@@ -185,7 +200,7 @@ var DisplayArray = /** @class */ (function () {
         }
     };
     DisplayArray.prototype.drawTeachers = function () {
-        var teacherHTMLList = document.querySelector("teacher-list");
+        var teacherHTMLList = document.querySelector(".teacher-list");
         for (var _i = 0, _a = this.teachers; _i < _a.length; _i++) {
             var teacher = _a[_i];
             var listItem = this.createListItem(teacher.name, teacher.description, teacher.category, this.teacherFormatDate(teacher.arrivalDate));
@@ -199,7 +214,7 @@ fetchData().then(function (jsonObject) {
     var teacherArray = new Array();
     for (var _i = 0, jsonObject_1 = jsonObject; _i < jsonObject_1.length; _i++) {
         var person = jsonObject_1[_i];
-        person.isTeacher ? teacherArray.push(person) : studentArray.push(person);
+        person.isTeacher ? teacherArray.push(new Teacher(person)) : studentArray.push(new Student(person));
     }
     var arrays = new DisplayArray(studentArray, teacherArray);
     arrays.drawStudents();
