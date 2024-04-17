@@ -24,7 +24,7 @@ Make it responsive for mobile phone
 
 ## Test conclusion (my own)
 I successfully followed 3 out of 4 instructions for the test : 
-- I added a .md file explaining how to run locally the project and I'll also publish it on GitHub Page. 🆗 
+- I added a .md file explaining how to run locally the project and I'll also publish it on [GitHub Page](https://jibe7.github.io/2024-Test-Technique/). 🆗 
 - I created TypeScript class and typed all the variables of the code 🆗
 - I put the final repository on GitHub (public) 🆗
 - I did it without framework using HTML, TypeScript, but I used only CSS instead of SCSS that I didn't know at the time of the assignment ❌
